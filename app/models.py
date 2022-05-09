@@ -10,10 +10,10 @@ class Delegate(models.Model):
     delegateCity = models.CharField(max_length=100, blank=True)
     delegateState = models.CharField(max_length=100, blank=True)
     delegateZipCode = models.CharField(max_length=100, blank=True)
-    attTelNo = models.IntegerField(max_length=10, blank=False)
-    attFaxNo = models.IntegerField(max_length=10, blank=False)
+    attTelNo = models.IntegerField(blank=False)
+    attFaxNo = models.IntegerField(blank=False)
     attEmailAddress = models.CharField(max_length=100, blank=True)
-    clientNo = models.IntegerField(max_length=5, blank=False)
+    clientNo = models.IntegerField(blank=False)
 
     class Meta:
         ordering = ['delegateNo']
@@ -56,7 +56,7 @@ class Course(models.Model):
     end_date = models.DateField(blank=False)
     start_time = models.TimeField(blank=False)
     end_time = models.TimeField(blank=False)
-    max_delegate = models.IntegerField(max_length=100)
+    max_delegate = models.IntegerField()
     confirmed = models.BooleanField(default="No")
     deliverer_employe_no = models.ForeignKey(Employee, on_delete=models.CASCADE)
     course_type_no = models.ForeignKey(CourseType, on_delete=models.CASCADE)
@@ -80,7 +80,7 @@ class CourseFee(models.Model):
 class Location(models.Model):
     location_no = models.BigAutoField(primary_key=True)
     location_name = models.CharField(max_length= 50, blank=False)
-    max_size = models.IntegerField(max_length=8, blank=False)
+    max_size = models.IntegerField(blank=False)
 
     class Meta:
         ordering = ['location_no']
@@ -103,7 +103,7 @@ class Invoice(models.Model):
     invoice_no = models.BigAutoField(primary_key=True)
     date_raised = models.DateField()
     date_paid = models.IntegerField()
-    credit_card_no = models.IntegerField(max_length=12)
+    credit_card_no = models.IntegerField()
     holders_name = models.CharField(max_length=100)
     expiry_date = models.DateField()
     resgistration_no = models.IntegerField()
